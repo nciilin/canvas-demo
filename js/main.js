@@ -1,5 +1,6 @@
 var canvas = document.getElementById('canvasShow');
 var context = canvas.getContext('2d');
+var lineWidth = 5;
 
 autoSetCanvasSize(canvas)
 
@@ -7,16 +8,62 @@ listenToUser(canvas)
 
 
 var eraserEnabled = false
+pen.onclick = function () {
+  eraserEnabled = false
+  pen.classList.add('active')
+  eraser.classList.remove('active')
+}
 eraser.onclick = function () {
   eraserEnabled = true
-  actions.className = 'actions x'
-
-}
-brush.onclick = function () {
-  eraserEnabled = false
-  actions.className = 'actions'
+  eraser.classList.add('active')
+  pen.classList.remove('active')
 }
 
+red.onclick = function () {
+  context.fillStyle = 'red'
+  context.strokeStyle = 'red'
+  red.classList.add('active')
+  blue.classList.remove('active')
+  green.classList.remove('active')
+}
+blue.onclick = function () {
+  context.fillStyle = 'blue'
+  context.strokeStyle = 'blue'
+  blue.classList.add('active')
+  red.classList.remove('active')
+  green.classList.remove('active')
+}
+green.onclick = function () {
+  context.fillStyle = 'green'
+  context.strokeStyle = 'green'
+  green.classList.add('active')
+  red.classList.remove('active')
+  blue.classList.remove('active')
+}
+
+thin.onclick = function() {
+  lineWidth = 5
+}
+
+thick.onclick = function() {
+  lineWidth = 10
+}
+clear.onclick = function () {
+  context.clearRect(0,0, canvas.width, canvas.height)
+  clear.classList.add('active')
+  pen.classList.remove('active')
+  eraser.classList.remove('active')
+}
+
+download.onclick = function () {
+  var url = canvas.toDataURL('image/png')
+  var a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = url
+  a.download = '我的画'
+  a.target = '_blank'
+  a.click()
+}
 
 function autoSetCanvasSize(canvas) {
   setCanvasSize()
@@ -43,9 +90,8 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
   context.beginPath();
-  context.strokeStyle = 'black'
   context.moveTo(x1, y1) // 起点
-  context.lineWidth = 5
+  context.lineWidth = lineWidth
   context.lineTo(x2, y2) // 终点
   context.stroke()
   context.closePath()
@@ -92,7 +138,7 @@ function listenToUser(canvas) {
         lastPoint = newPoint
       }
     }
-    canvas.ontouchend = function(aaa) {
+    canvas.ontouchend = function (aaa) {
       using = false
     }
   } else {
