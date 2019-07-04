@@ -1,8 +1,10 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
-
+html {
+  overflow: hidden;
+}
 ol,
 li {
   list-style: none;
@@ -23,7 +25,6 @@ li {
 
 body {
   margin: 0px;
-  overflow: hidden;
 }
 
 .actions {
