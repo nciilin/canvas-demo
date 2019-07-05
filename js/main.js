@@ -1,3 +1,4 @@
+
 var canvas = document.getElementById('canvasShow');
 var context = canvas.getContext('2d');
 var lineWidth = 5;
@@ -12,11 +13,13 @@ pen.onclick = function () {
   eraserEnabled = false
   pen.classList.add('active')
   eraser.classList.remove('active')
+  clear.classList.remove('active')
 }
 eraser.onclick = function () {
   eraserEnabled = true
   eraser.classList.add('active')
   pen.classList.remove('active')
+  clear.classList.remove('active')
 }
 
 red.onclick = function () {
@@ -25,6 +28,7 @@ red.onclick = function () {
   red.classList.add('active')
   blue.classList.remove('active')
   green.classList.remove('active')
+  black.classList.remove('active')
 }
 blue.onclick = function () {
   context.fillStyle = 'blue'
@@ -32,6 +36,7 @@ blue.onclick = function () {
   blue.classList.add('active')
   red.classList.remove('active')
   green.classList.remove('active')
+  black.classList.remove('active')
 }
 green.onclick = function () {
   context.fillStyle = 'green'
@@ -39,6 +44,17 @@ green.onclick = function () {
   green.classList.add('active')
   red.classList.remove('active')
   blue.classList.remove('active')
+  black.classList.remove('active')
+}
+black.onclick = function() {
+  context.fillStyle = 'black'
+  context.strokeStyle = 'black'
+  black.classList.add('active')
+  red.classList.remove('active')
+  blue.classList.remove('active')
+  green.classList.remove('active')
+  
+
 }
 
 thin.onclick = function() {

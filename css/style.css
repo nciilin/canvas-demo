@@ -21,6 +21,9 @@ li {
 #canvasShow {
   background: #fff;
   display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 body {
@@ -71,6 +74,9 @@ body {
 
 .colors>ol>li.green {
   background: green;
+}
+.colors>ol>li.black {
+  background: black;
 }
 
 .colors>ol>li.active {
