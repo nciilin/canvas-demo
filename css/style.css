@@ -88,18 +88,23 @@ body {
   position: fixed;
   right: 20px;
   top: 10px;
+  transition: all .3s;
 }
 .sizes > li {
   margin: 20px 0;
 }
 .sizes > .thin {
-  height: 0;
+  height: 5;
   width: 20px;
   border-top: 3px solid black;
 }
 
 .sizes > .thick {
-  height: 0;
+  height: 50;
   width: 20px;
   border-top: 6px solid black;
+}
+
+.sizes .active {
+  transform: scale(1.2)
 }
